@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <style>
+    ul{list-style:none;}
+.hello {
+    float: left;
+    width: 20%;
+    height:350px;
+    margin: 0 0 15px 20px;
+    padding: 15px;
+    border: 1px solid #CCC;
+    text-align: center;
+}
+</style>
+  </head>
+  <body>
+    <h1 align="center"><%= title %></h1>
+
+    <ng-view></ng-view>
+
+    <!-- Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-resource.min.js"></script>
+
+    <!-- Template -->
+    <script type="text/ng-template" id="/products.html">
+              <img width="100" ng-src="{{product.img}}" />
+            <h1>{{product.description}}</h1>
+            <h2> Price: {{product.price}}</h2>  
+            <h2>Category:{{product.category}}</h2>
+          </div>
+       </li>
+      </ul>
+      
+    </script>
+
+    <script>
+      angular.module('app', ['ngRoute', 'ngResource'])
+
+        //---------------
+        // Services
+        //---------------
+
+        .factory('Products', ['$resource', function($resource){
+          return $resource('/products/:id', null, {
+            'update': { method:'PUT' }
+          });
+        }])
+
+        //---------------
+        // Controllers
+        //---------------
+
+        .controller('ProductController', ['$scope', 'Products', function ($scope, Products) {
+          $scope.editing = [];
+          $scope.products = Products.query();
+        }])
+
+
+        //---------------
+        // Routes
+        //---------------
+
+        .config(['$routeProvider', function ($routeProvider) {
+          $routeProvider
+            .when('/', {
+              templateUrl: '/products.html',
+              controller: 'ProductController'
+            });
+        }]);
+    </script>
+  </body>
+</html>

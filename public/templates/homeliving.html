@@ -1,0 +1,107 @@
+<!--  <section class="homepage-slider" id="home-slider">
+  <div class="flexslider">
+                   <ul class="slides">
+                        <li> <img src="./themes/images/carousel/banner-15.jpg" alt="" /> </li>
+                        <li> <img src="./themes/images/carousel/banner-16.jpg" alt="" />
+                           
+                        </li>
+                        <li> <img src="./themes/images/carousel/banner-17.jpg" alt="" /> </li>
+                       
+                    </ul>
+                </div>
+				</section>-->
+
+
+
+				
+				           <section class="header_text"> </section>
+            <section class="main-content">
+                <div class="row">
+                    <div class="span12">
+                        <div class="row">
+                            
+                           
+                            
+                            
+                           
+                            
+     
+                            
+                           
+                             <div class="span12" >
+                                <h4 class="title">
+                                   
+									<span class="pull-left"><span class="text"><span class="line">Home & Living</span></span></span>
+									
+								</h4>
+                                <div id="myCarousel" class="myCarousel carousel slide">
+                                    <div class="carousel-inner">
+                                        <div class="active item">
+                                            <ul class="thumbnails">
+                                                <li class="span3" ng-repeat="product in products  | filter:{category:'home & living'}  | filter:search | limitTo:12">
+                                                    <div class="product-box"> <span class="sale_tag"></span>
+                                                       <p>
+                                                            <a href="#/product_detail/{{product._id}}"><img src="{{product.img}}" alt="" /></a>
+                                                        </p> <a  href="#/product_detail/{{product._id}}">{{product.title}}</a>
+                                                        <br/> <a href="#/product_detail/{{product._id}}" class="category">{{product.category}}</a>
+                                                        <p class="price">₹{{product.price}}</p>
+                                                    </div>
+                                                </li>
+                                         
+                                            </ul>
+                                        </div>
+                                         
+                                    </div>
+                                </div>                    
+                        </div>
+                            
+     
+                             
+                             
+                            
+     
+                            
+                            
+                            
+     
+                          
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        </div>
+                        <br/>
+                 
+                        <h4 class="title"><span class="text">Features</span></h4>
+                        <div class="row feature_box">
+                            <div class="span4">
+                                <div class="service">
+                                    <div class="responsive"> <img src="themes/images/feature_img_1.png" alt="" />
+                                        <h4>LATEST <strong>DESIGNS</strong></h4>
+                                        <p></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="span4">
+                                <div class="service">
+                                    <div class="customize"> <img src="themes/images/feature_img_4.png" alt="" />
+                                        <h4>FREE <strong>SHIPPING</strong></h4>
+                                        <p></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="span4">
+                                <div class="service">
+                                    <div class="support"> <img src="themes/images/feature_img_3.png" alt="" />
+                                        <h4>24/7 LIVE <strong>SUPPORT</strong></h4>
+                                        <p></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>

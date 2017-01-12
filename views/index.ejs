@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+<head>
+    <meta charset="utf-8">
+    <title>ShopKart</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <title>
+        <%= title %>
+    </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-resource.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-local-storage/0.5.0/angular-local-storage.min.js"></script> 
+       <script src="/jquery-1.7.2.min.js"></script>
+    <script src="/jquery.scrolltotop.js"></script>
+    <script src="/jquery.flexslider-min.js"></script>
+    <!-- scripts -->
+    <!-- Libraries -->
+    <script src="/bootstrap.min.js"></script>
+ 
+    <script src="/superfish.js"></script>
+    <!-- bootstrap -->
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/themes/css/bootstrappage.css" rel="stylesheet" />
+    <!--	 global styles -->
+    <link href="/themes/css/flexslider.css" rel="stylesheet" />
+    <link href="/themes/css/main.css" rel="stylesheet" /> 
+     <link href="/themes/css/style.css" rel="stylesheet" /> 
+
+          </head>
+    
+                <body>
+				
+				<div id="top-bar" class="container">
+            <div class="row">
+                
+                <div class="span4">
+                
+              <form method="POST" class="search_form">
+                 
+                    <input type="text" class="input-block-level search-query" Placeholder="Search" ng-model="search"></form>
+
+               </div>
+                <div class="span8">
+                    <div class="account pull-right">
+                        <ul class="user-menu">
+                             <li><a href="#/addtocart"><img src="/themes/images/cart.gif"></a></li>
+                            <li><a href="#/"><img src="/themes/images/homeicon.png"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="wrapper" class="container">
+            <section class="navbar main-menu">
+                <div class="navbar-inner main-menu">
+                    <a href="#/" class="logo pull-left"><img src="themes/images/logo.png" class="site_logo" alt=""></a>
+                    <nav id="menu" class="pull-right">
+                        <ul>
+                        <li><a href="#/" >Feature Products</a>
+                        </li>
+                            <li><a href="#/clothes" >CLOTHING</a>
+                        </li>
+                            <li><a href="#/electronics" >ELECTRONICS</a></li>
+                            <li><a href="#/books" >BOOKS</a></li>
+                        <li><a href="#/homeliving" >HOME & LIVING</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </section>
+                   <section class="homepage-slider" id="home-slider">
+                <div class="flexslider">
+                    <ul class="slides">
+                        <li> <img src="./themes/images/carousel/banner-14.jpg" alt="" /> </li>
+                        <li> <img src="./themes/images/carousel/banner-11.jpg" alt="" /></li>
+                        <li> <img src="./themes/images/carousel/banner-16.jpg" alt="" /> </li>
+                        <li> <img src="./themes/images/carousel/banner-20.jpg" alt="" /> </li>
+                        <li> <img src="./themes/images/carousel/banner-6.jpg" alt="" /></li>
+                        <li> <img src="./themes/images/carousel/banner-17.jpg" alt="" /> </li>
+                        <li> <img src="./themes/images/carousel/banner-15.jpg" alt="" /></li>
+                        <li> <img src="./themes/images/carousel/banner-19.jpg" alt="" /> </li>
+                    </ul>
+                </div>
+            </section>
+			
+			<ng-view></ng-view>
+            
+            <section class="our_client">
+                <h4 class="title"><span class="text">Manufactures</span></h4>
+                <div class="row">
+                    <div class="span2">
+                        <a><img alt="" src="themes/images/clients/14.png"></a>
+                    </div>
+                    <div class="span2">
+                        <a><img alt="" src="themes/images/clients/nike.jpg"></a>
+                    </div>
+                    <div class="span2">
+                        <a><img alt="" src="themes/images/clients/2.png"></a>
+                    </div>
+                    <div class="span2">
+                        <a><img alt="" src="themes/images/clients/mac.jpg"></a>
+                    </div>
+                    <div class="span2">
+                        <a><img alt="" src="themes/images/clients/3.png"></a>
+                    </div>
+                    <div class="span2">
+                        <a><img alt="" src="themes/images/clients/microsoft.jpg"></a>
+                    </div>
+                </div>
+            </section>
+            <section id="footer-bar">
+                <div class="row">
+                    <div class="span3">
+                        <h4>Navigation</h4>
+                        <ul class="nav">
+                            <li><a href="#/">Homepage</a></li>
+                            <!--<li><a href="./about.html">About Us</a></li>-->
+                            <li><a href="#/contact" >Contact Us</a></li>
+                            <!--<li><a href="./cart.html">Your Cart</a></li>
+							<li><a href="./register.html">Login</a></li>-->
+                        </ul>
+                    </div>
+                    <div class="span4">
+                        <!--<h4>My Account</h4>
+						<ul class="nav">
+							<li><a href="#">My Account</a></li>
+							<li><a href="#">Order History</a></li>
+							<li><a href="#">Wish List</a></li>
+							<li><a href="#">Newsletter</a></li>
+						</ul>--></div>
+                    <div class="span5">
+                        <p class="logo"><img src="themes/images/logo.png" class="site_logo" alt=""></p>
+                        <p>Shopkart makes online shopping as hassle-free as possible. You can always rest assured about the quality of products you are buying online at our site. Together with our trusted partners we promise to deliver only original and brand-new products, with the correct bill.</p>
+                        <br/> <span class="social_icons">
+							<a class="facebook" href="#">Facebook</a>
+							<a class="twitter" href="#">Twitter</a>
+							<a class="skype" href="#">Skype</a>
+							<a class="vimeo" href="#">Vimeo</a>
+						</span> </div>
+                </div>
+            </section>
+            <section id="copyright"> <span>©2017, Shopkart.com, Inc. or its affiliates</span> </section>
+        </div>
+<script type="text/ng-template" id="/products.html">
+        
+               
+                
+                 
+                
+                 
+                
+                
+                
+                 <div class="flexslider" ng-show="book_products"">
+                    <ul class="slides">
+                        <li> <img src="./themes/images/carousel/banner-18.jpg" alt="" /> </li>
+                        <li> <img src="./themes/images/carousel/banner-19.jpg" alt="" />
+                        
+                        </li>
+                        <li> <img src="./themes/images/carousel/banner-20.jpg" alt="" /> </li>
+                        
+                    </ul>
+                </div>
+                
+                 <div class="flexslider" ng-show="home_products"">
+                    <ul class="slides">
+                        <li> <img src="./themes/images/carousel/banner-15.jpg" alt="" /> </li>
+                        <li> <img src="./themes/images/carousel/banner-16.jpg" alt="" />
+                           
+                        </li>
+                        <li> <img src="./themes/images/carousel/banner-17.jpg" alt="" /> </li>
+                       
+                    </ul>
+                </div>
+                
+            
+    </script>
+    <script src="themes/js/common.js"></script>
+    <script src="themes/js/jquery.flexslider-min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(document).ready(function () {
+                $('.flexslider').flexslider({
+                    animation: "fade"
+                    , slideshowSpeed: 4000
+                    , animationSpeed: 600
+                    , controlNav: false
+                    , directionNav: true
+                    , controlsContainer: ".flex-container" // the container that holds the flexslider
+                });
+            });
+        });
+    </script>
+    <script>
+        angular.module('app', ['ngRoute', 'ngResource','LocalStorageModule'])
+            //---------------
+            // Services
+            //---------------
+            .factory('Products', ['$resource', function ($resource) {
+                return $resource('/products/:id', null, {
+                    'update': {
+                        method: 'PUT'
+                    }
+                });
+        }])
+            //---------------
+            // Controllers
+            //---------------
+            .controller('ProductController', ['$scope', 'Products', '$routeParams', function ($scope, Products, $routeParams) {
+              
+                $scope.editing = [];
+                $scope.products = Products.query();
+                
+                /*$scope.product_detail = Products.get({id:$routeParams.id});*/
+            
+               
+               
+                 
+     
+        }])
+            .controller('ProductDetailController', ['$scope', 'Products', '$routeParams','localStorageService',function ($scope, Products, $routeParams,localStorageService) {
+                
+                
+                $scope.product_detail = Products.get({id:$routeParams.id},function(){
+                      $scope.modals=false;
+                       $scope.FromDate = new Date();
+                    $scope.invoice=Math.floor((Math.random()*99999)+253);
+                      $scope.orderid=Math.floor((Math.random()*1030)+786);
+                    $scope.modal=function(){
+                          $scope.modals=true;
+                    }
+              
+                });
+                
+          
+                
+             $scope.addToCart=function(product_detail) {
+                var product = product_detail;
+                var productList = localStorageService.get('productList') || [];
+                $scope.exists = false;
+                angular.forEach(productList, function(val, key) {
+                    if (angular.equals(product._id, val._id)) {
+                        $scope.exists = true;
+                                 alert("Product Already Exist")
+                    };
+                });
+                if ($scope.exists == false && product.id != "") {
+                    productList.push(product);
+                    localStorageService.set('productList', productList);
+                             alert("Product Added To Cart")
+                } 
+   
+
+             };
+               
+                 
+     
+        }]) 
+        
+          .controller('CartDetailCtrl', ['$scope', 'Products', '$routeParams', 'localStorageService', function($scope, Products, $routeParams, localStorageService) {
+            $scope.productList = localStorageService.get('productList');
+             
+            $scope.empty="false";
+              $scope.data="false";
+              
+                 if($scope.productList.length==0)
+                     {
+                     $scope.empty="true"; 
+                          $scope.data="false";
+                     }
+           else
+               {
+                    $scope.empty="false"; 
+                          $scope.data="true"; 
+               }
+                
+                  $scope.modals=false;
+                       $scope.FromDate = new Date();
+                    $scope.invoice=Math.floor((Math.random()*99999)+253);
+                      $scope.orderid=Math.floor((Math.random()*1030)+786);
+                    $scope.modal=function(){
+                          $scope.modals=true;
+                    }
+              
+                
+              
+              
+              
+              
+            
+            //cart products sum total
+            $scope.getTotal = function() {
+                var total = 0;
+                console.log($scope.productList);
+                angular.forEach($scope.productList, function(val, key) {
+                    console.log("original price : " + val.price);
+                    var tempPrice = val.price;
+                    console.log("temp var : " + tempPrice);
+                    total += tempPrice;
+                 console.log(total)
+                });
+               
+                return total;
+            }
+
+            //to remove product from cart
+            $scope.remove = function(product_info) {
+                console.log(product_info);
+                angular.forEach($scope.productList, function(val, key) {
+                    if (angular.equals(product_info._id, val._id)) {
+                        var index = $scope.productList.indexOf(val)
+                        $scope.productList.splice(index, 1);
+                        localStorageService.set('productList', $scope.productList);
+                    };
+                });
+                if($scope.productList.length==0){
+                     $scope.empty="true"; 
+                     $scope.data="false";
+                }
+            };
+        }]) 
+        
+        
+        
+        
+        
+        
+        
+        
+            //---------------
+            // Routes
+            //---------------
+            .config(['$routeProvider', function ($routeProvider) {
+                $routeProvider.when('/', {
+                    templateUrl: '/templates/all_products.html'
+                    , controller: 'ProductController'
+                })
+                .when('/clothes', {
+                    templateUrl: '/templates/clothes.html'
+                    , controller: 'ProductController'
+                })
+                .when('/electronics', {
+                    templateUrl: '/templates/electronics.html'
+                    , controller: 'ProductController'
+                })
+                .when('/books', {
+                    templateUrl: '/templates/books.html'
+                    , controller: 'ProductController'
+                })
+                .when('/homeliving', {
+                    templateUrl: '/templates/homeliving.html'
+                    , controller: 'ProductController'
+                })
+                .when('/contact', {
+                    templateUrl: '/templates/contact.html'
+                    , controller: 'ProductController'
+                })
+              .when('/product_detail/:id', {
+                    templateUrl: '/templates/product_detail.html'
+                     , controller: 'ProductDetailController'
+                })
+                 .when('/addtocart', {
+                    templateUrl: '/templates/addtocart.html'
+                     , controller: 'CartDetailCtrl'
+                });
+              
+        }]);
+    </script>
+</body>
+
+</html>
