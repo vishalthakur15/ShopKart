@@ -260,6 +260,16 @@
                  
      
         }]) 
+            .controller('CatalogueController', ['$scope', 'Products', '$routeParams','localStorageService',function ($scope, Products, $routeParams,localStorageService) {
+                
+                $scope.products = []; 
+                $scope.products_insert= function(){
+                    alert(JSON.stringify($scope.products));
+                    Products.post($scope.products,function(){
+                        //do something here
+                    });   
+                };
+        }])         
         
           .controller('CartDetailCtrl', ['$scope', 'Products', '$routeParams', 'localStorageService', function($scope, Products, $routeParams, localStorageService) {
             $scope.productList = localStorageService.get('productList');
@@ -366,7 +376,13 @@
                  .when('/addtocart', {
                     templateUrl: '/templates/addtocart.html'
                      , controller: 'CartDetailCtrl'
-                });
+                })
+                 .when('/adminCatalogue', {
+                    templateUrl: '/templates/catalogue.html'
+                     , controller: 'CatalogueController'
+                });                
+                
+                
               
         }]);
     </script>
