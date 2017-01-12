@@ -35,17 +35,15 @@ router.get('/:id', function(req, res, next) {
     res.json(post);
       
   });
+ });   
     
 router.post('/', function(req, res, next) {
     debugger;
     var reqq = req;
   product.insertMany(req.body, function (err, post) {
     if (err) return next(err);
-  
     res.json(post);
-      
   });
-}); 
-
+});     
 
 module.exports = router;
