@@ -265,7 +265,8 @@
                 $scope.products = []; 
                 $scope.products_insert= function(){
                     alert(JSON.stringify($scope.products));
-                    Products.post($scope.products,function(){
+                    Products.save($scope.products,function(val, key){
+                        
                         //do something here
                     });   
                 };
@@ -345,7 +346,8 @@
             // Routes
             //---------------
             .config(['$routeProvider', function ($routeProvider) {
-                $routeProvider.when('/', {
+                $routeProvider
+                    .when('/', {
                     templateUrl: '/templates/all_products.html'
                     , controller: 'ProductController'
                 })
