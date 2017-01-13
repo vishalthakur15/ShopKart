@@ -20,8 +20,11 @@
     <!-- scripts -->
     <!-- Libraries -->
     <script src="/bootstrap.min.js"></script>
+    <script src="/bootstrap-select.js"></script>
  
     <script src="/superfish.js"></script>
+	<script src="/sweetalert.min.js"></script>
+	
     <!-- bootstrap -->
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
@@ -30,7 +33,7 @@
     <link href="/themes/css/flexslider.css" rel="stylesheet" />
     <link href="/themes/css/main.css" rel="stylesheet" /> 
      <link href="/themes/css/style.css" rel="stylesheet" /> 
-
+	 <link href="/sweetalert.min.css" rel="stylesheet" /> 
           </head>
     
                 <body>
@@ -42,13 +45,13 @@
                 
               <form method="POST" class="search_form">
                  
-                    <input type="text" class="input-block-level search-query" Placeholder="Search" ng-model="search"></form>
-
+                    <input type="text" class="input-block-level search-query" Placeholder="Search" ng-model="search" style="width:283.8px;">
+<a  ng-href='{{search? "#/search" : "#/" }}'   class="btn btn-info btn-lg pull-right" style="padding: 4px 20px 4px;border-radius:0px;" ><i class="fa fa-credit-card"></i>Search</a></form>
                </div>
                 <div class="span8">
                     <div class="account pull-right">
                         <ul class="user-menu">
-                             <li><a href="#/addtocart"><img src="/themes/images/cart.gif"></a></li>
+                             <li><a href="#/addtocart"><img src="/themes/images/cart.gif">&nbsp{{noitemcart()}}&nbspitems</a></li>
                             <li><a href="#/"><img src="/themes/images/homeicon.png"></a></li>
                         </ul>
                     </div>
@@ -210,21 +213,44 @@
             //---------------
             // Controllers
             //---------------
-            .controller('ProductController', ['$scope', 'Products', '$routeParams', function ($scope, Products, $routeParams) {
-              
-                $scope.editing = [];
+            .controller('ProductController', ['$rootScope', '$scope','Products', '$routeParams','localStorageService', function ($rootScope,$scope, Products, $routeParams,localStorageService) {
+
+		
+		/*Previous code*/	
+			
+			$scope.selitem = "Low To High";
+
+		  $scope.editing = [];
                 $scope.products = Products.query();
                 
                 /*$scope.product_detail = Products.get({id:$routeParams.id});*/
+                $scope.getselectval= function(){
+				
+                    if($scope.selitem == "l1"){
+                   $scope.isReverse = true;
+                    
+                }else{
+                      $scope.isReverse = false;
+                }
+                 }
+				 
+				 
+				 
+				   $rootScope.noitemcart = function(){
+				    var productList = localStorageService.get('productList') || [];
+					return productList.length;
+				}
             
                
                
                  
      
         }])
-            .controller('ProductDetailController', ['$scope', 'Products', '$routeParams','localStorageService',function ($scope, Products, $routeParams,localStorageService) {
+		
+		
+            .controller('ProductDetailController', ['$rootScope', '$scope', 'Products', '$routeParams','localStorageService',function ($rootScope, $scope, Products, $routeParams,localStorageService) {
                 
-                
+                  
                 $scope.product_detail = Products.get({id:$routeParams.id},function(){
                       $scope.modals=false;
                        $scope.FromDate = new Date();
@@ -235,29 +261,54 @@
                     }
               
                 });
+				
+				
+				
+				  $rootScope.noitemcart = function(){
+				    var productList = localStorageService.get('productList') || [];
+					return productList.length;
+				}
                 
           
                 
              $scope.addToCart=function(product_detail) {
+			 
+                              swal("Success", "The item has been added to the cart!", "error");
+                                
+                                
+                                 
+
+			 
+			 
+			 
                 var product = product_detail;
+                 
+               
                 var productList = localStorageService.get('productList') || [];
                 $scope.exists = false;
                 angular.forEach(productList, function(val, key) {
                     if (angular.equals(product._id, val._id)) {
                         $scope.exists = true;
-                                 alert("Product Already Exist")
+                               
+								   swal("Product Already Exist", "The item already exists in the cart!", "error");
                     };
                 });
                 if ($scope.exists == false && product.id != "") {
+                   product.cartitem = 1;
+               
                     productList.push(product);
                     localStorageService.set('productList', productList);
-                             alert("Product Added To Cart")
+                            
+							   swal("Product Added To Cart ", "The item has been added to the cart!", "success");
                 } 
    
 
              };
                
-                 
+                $rootScope.noitemcart = function(){
+				    var productList = localStorageService.get('productList') || [];
+					return productList.length;
+				}
      
         }]) 
             .controller('CatalogueController', ['$scope', 'Products', '$routeParams','localStorageService',function ($scope, Products, $routeParams,localStorageService) {
@@ -272,7 +323,7 @@
                 };
         }])         
         
-          .controller('CartDetailCtrl', ['$scope', 'Products', '$routeParams', 'localStorageService', function($scope, Products, $routeParams, localStorageService) {
+          .controller('CartDetailCtrl', ['$rootScope','$scope', 'Products', '$routeParams', '$location', 'localStorageService', function($rootScope,$scope, Products, $routeParams, $location,  localStorageService) {
             $scope.productList = localStorageService.get('productList');
              
             $scope.empty="false";
@@ -299,24 +350,67 @@
               
                 
               
+                $scope.bill = function()
+                {
+                    $location.path('/billing');
+                }
+              $scope.clear = function()
+              {
+                  $scope.productList =[];
+                    localStorageService.set('productList', $scope.productList);
+                  if($scope.productList.length==0){
+                     $scope.empty="true"; 
+                     $scope.data="false";
+                }
+              }
               
+               $scope.funct1 = function(product_info)
+              
+              {
+                  product_info.cartitem = product_info.cartitem+1;
+                   localStorageService.set('productList', $scope.productList);
+                  //  alert(product_info.cartitem);
+              }
+                 $scope.funct2 = function(product_info)
+              {
+                  product_info.cartitem = product_info.cartitem-1;
+                     localStorageService.set('productList', $scope.productList);
+              }
+              
+            $scope.okfun = function()
+            {
+               
+                angular.forEach($scope.productList,function(product_info)
+                {
+                  console.log($scope.productList + ""+  product_info._id);
+                    var User = $resource('/quantity_update/:id');
+                           var user = User.put({id:product_info._id},product_info, function() {
+                           
+                            });
+                    
+                }
+                     
+            )};
+                  
+        
+                $rootScope.noitemcart = function(){
+				    var productList = localStorageService.get('productList') || [];
+					return productList.length;
+				}
               
               
             
-            //cart products sum total
+             //cart products sum total
             $scope.getTotal = function() {
                 var total = 0;
-                console.log($scope.productList);
                 angular.forEach($scope.productList, function(val, key) {
-                    console.log("original price : " + val.price);
-                    var tempPrice = val.price;
-                    console.log("temp var : " + tempPrice);
+                     var tempPrice = val.price * val.cartitem;
                     total += tempPrice;
-                 console.log(total)
                 });
                
                 return total;
             }
+
 
             //to remove product from cart
             $scope.remove = function(product_info) {
@@ -382,7 +476,15 @@
                  .when('/adminCatalogue', {
                     templateUrl: '/templates/catalogue.html'
                      , controller: 'CatalogueController'
-                });                
+                }) 
+                 .when('/billing', {
+                    templateUrl: '/templates/billing.html'
+                    , controller: 'CartDetailCtrl'
+                })
+                .when('/search', {
+                    templateUrl: '/templates/search.html'
+                    , controller: 'ProductController'
+                });
                 
                 
               
