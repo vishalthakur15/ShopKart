@@ -2,7 +2,7 @@
 			<section class="main-content">				
 				<div class="row" ng-show="data">
 					<div class="span12">					
-						<h4 class="title"><span class="text"><strong>Your</strong> Cart</span></h4>
+						<h4 class="title"><span class="text"><b>Your</b><strong> Cart</strong></span></h4>
                         <p class="buttons right">		
 
 							
@@ -55,6 +55,7 @@
                
                 <div ng-show="empty">
                   <h3 align="center" style="color:red;">No Items In Cart</h3>
+                    <center><a href="/#" class="btn btn-info">Continue Shopping</a></center>
                 </div>
             
                <!--  
@@ -147,7 +148,7 @@
                             <div class="row">
                                 <div class="col-xs-12">
                                     <h3 class="page-header">
-                                    <i class="fa fa-globe"></i>Order Summary
+                                    <i class="fa fa-globe"></i> Order Summary
                                     <small class="pull-right">{{FromDate.toDateString()}}</small>
                                 </h3> </div>
                                 <!-- /.col -->
@@ -228,7 +229,7 @@
                             <div class="row no-print">
                                 <div class="col-xs-12">
                                     <!-- <a href="" class="btn btn-default"><i class="fa fa-print"></i> Print</a>-->
-                                    <button ng-click="okfun()" class="btn btn-info btn-lg pull-right"><i class="fa fa-credit-card"></i> Checkout </button>
+                                    <button ng-click="okfun()" class="btn btn-info btn-lg pull-right" data-dismiss="modal"><i class="fa fa-credit-card"></i> Checkout </button>
                                     <!--<button class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>-->
                                 </div>
                             </div>

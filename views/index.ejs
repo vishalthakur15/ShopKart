@@ -14,6 +14,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-resource.min.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-local-storage/0.5.0/angular-local-storage.min.js"></script> 
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    
        <script src="/jquery-1.7.2.min.js"></script>
     <script src="/jquery.scrolltotop.js"></script>
     <script src="/jquery.flexslider-min.js"></script>
@@ -24,6 +26,7 @@
  
     <script src="/superfish.js"></script>
 	<script src="/sweetalert.min.js"></script>
+    <script src="/card.js"></script>
 	
     <!-- bootstrap -->
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -34,6 +37,8 @@
     <link href="/themes/css/main.css" rel="stylesheet" /> 
      <link href="/themes/css/style.css" rel="stylesheet" /> 
 	 <link href="/sweetalert.min.css" rel="stylesheet" /> 
+    <!--<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
           </head>
     
                 <body>
@@ -41,14 +46,14 @@
 				<div id="top-bar" class="container">
             <div class="row">
                 
-                <div class="span4">
+                <div class="span-md-4">
                 
               <form method="POST" class="search_form">
                  
-                    <input type="text" class="input-block-level search-query" Placeholder="Search" ng-model="search" style="width:283px;">
-<a  ng-href='{{search? "#/search" : "#/" }}'   class="btn btn-info btn-lg pull-right" style="padding: 4px 20px 4px;border-radius:0px;" ><i class="fa fa-credit-card"></i>Search</a></form>
+                    <input type="text" class="input-block-level search-query" Placeholder="Search" ng-model="search" style="width:282px;" >
+<a  ng-href='{{search? "#/search" : "#/" }}'   class="btn btn-info btn-lg pull-right"  style="border-radius:0px;"  ><i class="fa fa-search"></i></a></form>
                </div>
-                <div class="span8">
+                <div class="span-md-8 pull-right">
                     <div class="account pull-right">
                         <ul class="user-menu">
                              <li><a href="#/addtocart"><img src="/themes/images/cart.gif">&nbsp{{noitemcart()}}&nbspitems</a></li>
@@ -93,7 +98,7 @@
 			<ng-view></ng-view>
             
             <section class="our_client">
-                <h4 class="title"><span class="text">Manufactures</span></h4>
+                <h4 class="title"><span class="text"><b>Manufactures</b></span></h4>
                 <div class="row">
                     <div class="span2">
                         <a><img alt="" src="themes/images/clients/14.png"></a>
@@ -117,7 +122,7 @@
             </section>
             <section id="footer-bar">
                 <div class="row">
-                    <div class="span3">
+                    <div class="span2">
                         <h4>Navigation</h4>
                         <ul class="nav">
                             <li><a href="#/">Homepage</a></li>
@@ -127,22 +132,34 @@
 							<li><a href="./register.html">Login</a></li>-->
                         </ul>
                     </div>
-                    <div class="span4">
-                        <!--<h4>My Account</h4>
+                    <div class="span3">
+                        <h4>Categories</h4>
 						<ul class="nav">
-							<li><a href="#">My Account</a></li>
-							<li><a href="#">Order History</a></li>
-							<li><a href="#">Wish List</a></li>
-							<li><a href="#">Newsletter</a></li>
-						</ul>--></div>
-                    <div class="span5">
+							<li><a href="#/clothes">Clothing</a></li>
+							<li><a href="#/electronics">Electronics</a></li>
+							<li><a href="#/books">Books</a></li>
+							<li><a href="#/homeliving">Home & iving</a></li>
+						</ul></div>
+                    
+                       <div class="span3">
+                        <h4>Features</h4>
+						<ul class="nav">
+							<li><a href="#/clothes">latest Designs</a></li>
+							<li><a href="#/electronics">Free Shipping</a></li>
+							<li><a href="#/books">24*7 Live Support</a></li>
+							
+						</ul></div>
+                    
+                    
+                    
+                    <div class="span4">
                         <p class="logo"><img src="themes/images/logo.png" class="site_logo" alt=""></p>
-                        <p>Shopkart makes online shopping as hassle-free as possible. You can always rest assured about the quality of products you are buying online at our site. Together with our trusted partners we promise to deliver only original and brand-new products, with the correct bill.</p>
-                        <br/> <span class="social_icons">
-							<a class="facebook" href="#">Facebook</a>
-							<a class="twitter" href="#">Twitter</a>
-							<a class="skype" href="#">Skype</a>
-							<a class="vimeo" href="#">Vimeo</a>
+                        <p><font color="white">Shopkart makes online shopping as hassle-free as possible. You can always rest assured about the quality of products you are buying online at our site. Together with our trusted partners we promise to deliver only original and brand-new products, with the correct bill.</font></p>
+                        <br/> <span >
+							<a  href="https://www.facebook.com"><font color="white"><b><u>Facebook</u></b></font></a>
+							<a  href="https://www.twitter.com"><b><u>Twitter</u></b></a>
+							<a  href="https://www.skype.com"><b><u>Skype</u></b></a>
+							<a  href="https://www.linkedin.com"><b><u>LinkedIn</u></b></a>
 						</span> </div>
                 </div>
             </section>
@@ -213,11 +230,12 @@
             //---------------
             // Controllers
             //---------------
-            .controller('ProductController', ['$rootScope', '$scope','Products', '$routeParams','localStorageService', function ($rootScope,$scope, Products, $routeParams,localStorageService) {
+            .controller('ProductController', ['$rootScope', '$anchorScroll','$location','$scope','Products', '$routeParams','localStorageService', function ($rootScope, $anchorScroll,$location, $scope, Products, $routeParams,localStorageService) {
 
 		
 		/*Previous code*/	
-			
+			$location.hash('show');
+                $anchorScroll(); 
 			$scope.selitem = "Low To High";
 
 		  $scope.editing = [];
@@ -248,9 +266,13 @@
         }])
 		
 		
-            .controller('ProductDetailController', ['$rootScope', '$scope', 'Products', '$routeParams','localStorageService',function ($rootScope, $scope, Products, $routeParams,localStorageService) {
+            .controller('ProductDetailController', ['$rootScope', '$location','$scope', 'Products', '$routeParams','localStorageService',function ($rootScope, $location, $scope, Products, $routeParams,localStorageService) {
                 
                   
+                $scope.callfun = function(){
+                    
+                    $location.path('/billing');
+                }
                 $scope.product_detail = Products.get({id:$routeParams.id},function(){
                       $scope.modals=false;
                        $scope.FromDate = new Date();
@@ -269,7 +291,21 @@
 					return productList.length;
 				}
                 
-          
+          $scope.show = function(){
+              //alert("ee");
+               swal("Payment Successful", "Your order has been placed!", "success");
+               $location.path('/');
+            
+              
+          }
+          $scope.show1 = function(){
+              //alert("ee");
+               swal("Payment Successful", "Your order has been placed!", "success");
+               $location.path('/');
+            $scope.productList =[];
+               localStorageService.set('productList', $scope.productList);
+              
+          }
                 
              $scope.addToCart=function(product_detail) {
 			 
@@ -348,8 +384,9 @@
                           $scope.modals=true;
                     }
               
-                
-              
+              $scope.okfun = function(){
+                  $location.path('/billing1');
+              }
                 $scope.bill = function()
                 {
                     $location.path('/billing');
@@ -377,7 +414,7 @@
                      localStorageService.set('productList', $scope.productList);
               }
               
-            $scope.okfun = function()
+           /* $scope.okfun = function()
             {
                
                 angular.forEach($scope.productList,function(product_info)
@@ -390,7 +427,7 @@
                     
                 }
                      
-            )};
+            )};*/
                   
         
                 $rootScope.noitemcart = function(){
@@ -484,7 +521,16 @@
                 .when('/search', {
                     templateUrl: '/templates/search.html'
                     , controller: 'ProductController'
+                })
+                .when('/billing', {
+                    templateUrl: '/templates/billing.html'
+                    , controller: 'ProductDetailController'
+                })
+                 .when('/billing1', {
+                    templateUrl: '/templates/billing1.html'
+                    , controller: 'ProductDetailController'
                 });
+                
                 
                 
               

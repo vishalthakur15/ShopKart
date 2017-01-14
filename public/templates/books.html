@@ -22,16 +22,10 @@
                         <div class="row">
                             
                            
-                            
-                            
-                                                  
-     
-                            
-                           
-                             <div class="span12" >
+                             <div  class="span12" >
 							 
-							       <div class="container">
-            	<select  ng-model="selitem" ng-change="getselectval()" style="float:right;width:22px;" >
+							       <div class="container" id="show">
+            	<select  ng-model="selitem" ng-change="getselectval()" style="float:right;width:25px;" >
 <option value="l1">High To Low</option>
                     <option value="l2" selected>Low To High</option>
 </select>
@@ -40,15 +34,15 @@
 </div> 
                                 <h4 class="title">
                                    
-									<span class="pull-left"><span class="text"><span class="line">Books</span></span></span>
+									<span class="pull-left"><span class="text"><span class="line"><b>Books</b></span></span></span>
 									
 								</h4>
                                 <div id="myCarousel" class="myCarousel carousel slide">
                                     <div class="carousel-inner">
                                         <div class="active item">
                                             <ul class="thumbnails">
-                                                <li class="span3" ng-repeat="product in products  | filter:{category:'books'}  | limitTo:12 | orderBy:'price':isReverse"">
-                                                    <div class="product-box"> <span class="sale_tag"></span>
+                                                <li class="span3" ng-repeat="product in products  | filter:{category:'books'}  | limitTo:12 | orderBy:'price':isReverse">
+                                                    <div class="product-box"><span class="sale_tag"></span>
                                                        <p>
                                                             <a href="#/product_detail/{{product._id}}"><img src="{{product.img}}" alt="" /></a>
                                                         </p> <a  href="#/product_detail/{{product._id}}">{{product.title}}</a>
@@ -64,27 +58,13 @@
                                 </div>                    
                         </div>
                             
-     
-                             
-                             
-                            
-     
-                            
-                            
-                            
-     
-                          
-                            
-                            
-                            
-                            
                             
                             
                             
                         </div>
                         <br/>
                  
-                        <h4 class="title"><span class="text">Features</span></h4>
+                                                                        <h4 class="title"><span class="text"><b>Features</b></span></h4>
                         <div class="row feature_box">
                             <div class="span4">
                                 <div class="service">
@@ -105,7 +85,7 @@
                             <div class="span4">
                                 <div class="service">
                                     <div class="support"> <img src="themes/images/feature_img_3.png" alt="" />
-                                        <h4>24/7 LIVE <strong>SUPPORT</strong></h4>
+                                        <h4>24*7 LIVE <strong>SUPPORT</strong></h4>
                                         <p></p>
                                     </div>
                                 </div>
