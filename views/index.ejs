@@ -51,7 +51,8 @@
               <form method="POST" class="search_form">
                  
                     <input type="text" class="input-block-level search-query" Placeholder="Search" ng-model="search" style="width:282px;" >
-<a  ng-href='{{search? "#/search" : "#/" }}'   class="btn btn-info btn-lg pull-right"  style="border-radius:0px;"  ><i class="fa fa-search"></i></a></form>
+<a  ng-href='{{search? "#/search" : "#/" }}'   class="btn btn-info btn-lg pull-right"  style="border-radius:0px;"  ><i class="fa fa-search"></i></a>
+                    </form>
                </div>
                 <div class="span-md-8 pull-right">
                     <div class="account pull-right">
@@ -138,7 +139,7 @@
 							<li><a href="#/clothes">Clothing</a></li>
 							<li><a href="#/electronics">Electronics</a></li>
 							<li><a href="#/books">Books</a></li>
-							<li><a href="#/homeliving">Home & iving</a></li>
+							<li><a href="#/homeliving">Home & Living</a></li>
 						</ul></div>
                     
                        <div class="span3">
@@ -233,6 +234,7 @@
             .controller('ProductController', ['$rootScope', '$anchorScroll','$location','$scope','Products', '$routeParams','localStorageService', function ($rootScope, $anchorScroll,$location, $scope, Products, $routeParams,localStorageService) {
 
 		
+		
 		/*Previous code*/	
 			$location.hash('show');
                 $anchorScroll(); 
@@ -258,7 +260,7 @@
 				    var productList = localStorageService.get('productList') || [];
 					return productList.length;
 				}
-            
+                   
                
                
                  
@@ -298,8 +300,7 @@
             
               
           }
-          $scope.show1 = function(){
-              //alert("ee");
+          $scope.showOne = function(){
                swal("Payment Successful", "Your order has been placed!", "success");
                $location.path('/');
             $scope.productList =[];
