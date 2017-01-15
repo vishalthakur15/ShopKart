@@ -268,8 +268,11 @@
         }])
 		
 		
-            .controller('ProductDetailController', ['$rootScope', '$location','$scope', 'Products', '$routeParams','localStorageService',function ($rootScope, $location, $scope, Products, $routeParams,localStorageService) {
+            .controller('ProductDetailController', ['$rootScope', '$location','$scope','$anchorScroll', 'Products', '$routeParams','localStorageService',function ($rootScope, $location, $scope,$anchorScroll, Products, $routeParams,localStorageService) {
                 
+                
+                $location.hash('show');
+                $anchorScroll(); 
                   
                 $scope.callfun = function(){
                     
@@ -346,6 +349,17 @@
 				    var productList = localStorageService.get('productList') || [];
 					return productList.length;
 				}
+                
+                
+                
+                
+            
+                
+                
+                
+                
+                
+                
      
         }]) 
             .controller('CatalogueController', ['$scope', 'Products', '$routeParams','localStorageService',function ($scope, Products, $routeParams,localStorageService) {
@@ -360,9 +374,12 @@
                 };
         }])         
         
-          .controller('CartDetailCtrl', ['$rootScope','$scope', 'Products', '$routeParams', '$location', 'localStorageService', function($rootScope,$scope, Products, $routeParams, $location,  localStorageService) {
+          .controller('CartDetailCtrl', ['$rootScope','$scope','$anchorScroll', 'Products', '$routeParams', '$location', 'localStorageService', function($rootScope,$scope,$anchorScroll, Products, $routeParams, $location,  localStorageService) {
             $scope.productList = localStorageService.get('productList');
              
+              $location.hash('show');
+                $anchorScroll(); 
+              
             $scope.empty="false";
               $scope.data="false";
               
